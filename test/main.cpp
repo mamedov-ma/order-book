@@ -15,8 +15,6 @@ inline constexpr std::size_t MAX_REPS = 100'000'000;
 class Validator
 {
 public:
-    friend class stock::OrderBook;
-
     void validate()
     {
         checkAdd();
