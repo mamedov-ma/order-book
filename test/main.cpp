@@ -113,7 +113,7 @@ private:
         }
         auto stop = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        std::cout << "Average time taken for adding orders: " << duration.count() / MAX_REPS << " nanoseconds" << std::endl;
+        std::cout << "Average time taken for adding orders: " << duration.count() / MAX_REPS / 2 << " nanoseconds" << std::endl;
 
         start = std::chrono::high_resolution_clock::now();
         for (std::size_t i = 0; i < MAX_REPS; ++i)
@@ -123,7 +123,7 @@ private:
         }
         stop = std::chrono::high_resolution_clock::now();
         duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        std::cout << "Average time taken for modifying orders: " << duration.count() / MAX_REPS << " nanoseconds" << std::endl;
+        std::cout << "Average time taken for modifying orders: " << duration.count() / MAX_REPS / 2 << " nanoseconds" << std::endl;
 
         start = std::chrono::high_resolution_clock::now();
         for (std::size_t i = 0; i < MAX_REPS; ++i)
@@ -133,7 +133,7 @@ private:
         }
         stop = std::chrono::high_resolution_clock::now();
         duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        std::cout << "Average time taken for deleting orders: " << duration.count() / MAX_REPS << " nanoseconds" << std::endl;
+        std::cout << "Average time taken for deleting orders: " << duration.count() / MAX_REPS / 2 << " nanoseconds" << std::endl;
     }
 
     stock::OrderBook m_book;
