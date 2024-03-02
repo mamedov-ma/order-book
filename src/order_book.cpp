@@ -9,7 +9,7 @@ void order::set(price_t rprice, amount_t ramnount) noexcept
     amount = ramnount;
 }
 
-void OrderBook::displayTopOrders(std::ostream& ostream) const noexcept
+void OrderBook::displayTopOrders(std::ostream& ostream) const
 {
     std::size_t count = WINDOW_SIZE > m_sales.size() ? m_sales.size() : WINDOW_SIZE;
     ostream << "\nTop sale orders:";
