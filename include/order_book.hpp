@@ -14,7 +14,7 @@ using price_t = double; // arbitrary chosen type
 
 struct order
 {
-    order(price_t rprice, amount_t ramnount) { set(rprice, ramnount); }
+    order(price_t rprice, amount_t ramnount) noexcept { set(rprice, ramnount); }
     void set(price_t, amount_t) noexcept;
 
     price_t price{};
@@ -90,7 +90,7 @@ public:
         else { m_purchases.erase(order.price); }
     }
 
-    void displayTopOrders(std::ostream& = std::cout) const noexcept;
+    void displayTopOrders(std::ostream& = std::cout) noexcept;
 
 private:
     orders_t m_sales;
