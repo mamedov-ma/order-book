@@ -9,10 +9,10 @@ make
 ./ORDER_BOOK 
 ```
 
-### Benchmarking result on 100 million orders:
+### Benchmarking result on 100 million orders, 11th Gen Intel® Core™ i5-1135G7 @ 2.40GHz × 8:
 ```
-Average time taken for adding orders: 281 nanoseconds
-Average time taken for modifying orders: 163 nanoseconds
+Average time taken for adding orders: 315 nanoseconds
+Average time taken for modifying orders: 176 nanoseconds
 Average time taken for deleting orders: 146 nanoseconds
 ```
 
