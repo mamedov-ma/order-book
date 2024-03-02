@@ -109,6 +109,7 @@ private:
         for (std::size_t i = 0; i < MAX_REPS; ++i)
         {
             m_book.addOrder(stock::sale{1.0 + i, 100});
+            m_book.addOrder(stock::purchase{1.0 + i, 100});
         }
         auto stop = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
@@ -118,6 +119,7 @@ private:
         for (std::size_t i = 0; i < MAX_REPS; ++i)
         {
             m_book.modifyOrder(stock::sale{1.0 + i, 200});
+            m_book.modifyOrder(stock::purchase{1.0 + i, 200});
         }
         stop = std::chrono::high_resolution_clock::now();
         duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
@@ -127,6 +129,7 @@ private:
         for (std::size_t i = 0; i < MAX_REPS; ++i)
         {
             m_book.deleteOrder(stock::sale{1.0 + i, 200});
+            m_book.addOrder(stock::purchase{1.0 + i, 100});
         }
         stop = std::chrono::high_resolution_clock::now();
         duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
