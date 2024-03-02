@@ -129,7 +129,7 @@ private:
         for (std::size_t i = 0; i < MAX_REPS; ++i)
         {
             m_book.deleteOrder(stock::sale{1.0 + i, 200});
-            m_book.addOrder(stock::purchase{1.0 + i, 100});
+            m_book.deleteOrder(stock::purchase{1.0 + i, 200});
         }
         stop = std::chrono::high_resolution_clock::now();
         duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
