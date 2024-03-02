@@ -9,7 +9,7 @@ make
 ./ORDER_BOOK 
 ```
 
-### benchmarking result on 100 million orders:
+### Benchmarking result on 100 million orders:
 ```
 Average time taken for adding orders: 281 nanoseconds
 Average time taken for modifying orders: 163 nanoseconds
