@@ -45,11 +45,11 @@ public:
     template <AnOrder ORDER>
     void addOrder(ORDER const& order)
     {
-        if constexpr (std::is_same_v<ORDER, sale>)
+        if constexpr (std::is_same_v<std::remove_cvref_t<ORDER>, sale>)
         {
             if (auto const& [_, emplaced] = m_sales.try_emplace(order.price, order.amount); !emplaced) { m_sales[order.price] += order.amount; }
         }
-        else
+        else if constexpr (std::is_same_v<std::remove_cvref_t<ORDER>, purchase>)
         {
             if (auto const& [_, emplaced] = m_purchases.try_emplace(order.price, order.amount); !emplaced) { m_purchases[order.price] += order.amount; }
         }
@@ -59,7 +59,7 @@ public:
     void modifyOrder(ORDER const& newOrder) // maybe look for std::expected, if exceptions aren't suitable
     {
         // TODO: get rid of copypaste, perhapse introduce lambda or smth
-        if constexpr (std::is_same_v<ORDER, sale>)
+        if constexpr (std::is_same_v<std::remove_cvref_t<ORDER>, sale>)
         {
             if (auto it = m_sales.find(newOrder.price); it != m_sales.end())
             {
@@ -70,7 +70,7 @@ public:
                 throw std::runtime_error("no order to modify");
             }
         }
-        else
+        else if constexpr (std::is_same_v<std::remove_cvref_t<ORDER>, purchase>)
         {
             if (auto it = m_purchases.find(newOrder.price); it != m_purchases.end())
             {
@@ -86,8 +86,8 @@ public:
     template <AnOrder ORDER>
     void deleteOrder(ORDER const& order)
     {
-        if constexpr (std::is_same_v<ORDER, sale>) { m_sales.erase(order.price); }
-        else { m_purchases.erase(order.price); }
+        if constexpr (std::is_same_v<std::remove_cvref_t<ORDER>, sale>) { m_sales.erase(order.price); }
+        else if constexpr (std::is_same_v<std::remove_cvref_t<ORDER>, purchase>) { m_purchases.erase(order.price); }
     }
 
     void displayTopOrders(std::ostream& = std::cout) noexcept;
